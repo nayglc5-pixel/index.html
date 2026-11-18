@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XBLOK ULTRA KEY</title>
+<style>
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#070b14;
+  color:white;
+  font-family:Arial,sans-serif;
+}
+.panel {
+  width:90%;
+  max-width:390px;
+  padding:30px 22px;
+  text-align:center;
+  background:#101a2b;
+  border:1px solid #168cff;
+  border-radius:18px;
+  box-shadow:0 0 30px #087bff33;
+}
+h1 { color:#35a5ff; font-size:30px; }
+p { color:#aabbd0; }
+button {
+  width:100%;
+  padding:15px;
+  margin-top:15px;
+  border:0;
+  border-radius:9px;
+  background:#087bff;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+}
+#key {
+  margin-top:20px;
+  padding:14px;
+  background:#080f1d;
+  border:1px solid #244c79;
+  border-radius:8px;
+  overflow-wrap:anywhere;
+}
+small { color:#7188a5; }
+</style>
+</head>
+<body>
+<div class="panel">
+  <h1>XBLOK ULTRA</h1>
+  <p>FREE KEY SYSTEM</p>
+  <p>Genera tu clave gratuita de demostración.</p>
+
+  <button onclick="generateKey()">GET FREE KEY</button>
+
+  <div id="key">TU KEY APARECERÁ AQUÍ</div>
+
+  <button onclick="copyKey()">COPY KEY</button>
+  <br><br>
+  <small>XBLOK ULTRA V1.0</small>
+</div>
+
+<script>
+let currentKey = "";
+
+function generateKey() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let result = "XBLOK-";
+  for(let i=0; i<16; i++) {
+    result += chars[Math.floor(Math.random()*chars.length)];
+  }
+  currentKey = result;
+  document.getElementById("key").textContent = result;
+}
+
+function copyKey() {
+  if(!currentKey) {
+    alert("Primero genera tu Key");
+    return;
+  }
+  navigator.clipboard.writeText(currentKey)
+    .then(() => alert("KEY COPIADA"));
+}
+</script>
+</body>
+</html>
